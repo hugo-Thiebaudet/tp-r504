@@ -1,4 +1,4 @@
-name: test unitaires
+name: tests unitaires
 on: [push]
 jobs:
   build:
