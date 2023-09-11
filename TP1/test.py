@@ -8,3 +8,7 @@ def test_1():
 def test_2():
 		assert f.puissance(-6,2) == 36
 		assert f.puissance(-5,3) == -125
+
+def test_3():
+		assert f.puissance(0,0) == 1
+		assert f.puissance(6,2) == 36
