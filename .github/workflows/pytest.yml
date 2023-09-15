@@ -3,10 +3,15 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        Python-version: ["3.8","3.10"]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python for Demo
         uses: actions/setup-python@v4
+        with:
+           python-version: ${{ matrix.python-3.8 }}
       - name: install pytest
         run: pip3 install pytest
       - name: Run tests
