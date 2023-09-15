@@ -3,7 +3,7 @@ def puissance(a,b):
 		raise TypeError("only integers are allowed")
 	
 	if not type(b) is int:
-		raise TypeError("only integers areallowed")
+		raise TypeError("only integers are allowed")
 
 
 	return a**b
