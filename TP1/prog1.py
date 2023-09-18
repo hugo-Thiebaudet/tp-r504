@@ -4,6 +4,7 @@
 ##	nb = input()
 ##	nb2 = int(nb)
 ##	print ('Le produit au carré de', nb, 'est égal à : ', nb2**2 )
+## test de clonage
 
 import fonctiond as f	
 print ('Saisissez un nombre')
