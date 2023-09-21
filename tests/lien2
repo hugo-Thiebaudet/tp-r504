@@ -1,0 +1,3 @@
+echo bonjour $USER
+echo "Bonjour $USER"
+echo 'bonjour $USER'
