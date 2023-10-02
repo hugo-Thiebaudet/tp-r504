@@ -14,7 +14,7 @@ if [ "$2" = "" ]
 
 
 # i in { $n1..$n2 }
-for (( i=$n1; i=<$n2; i++ ))
+for (( i=$n1; i=<$n2; i++ ));
 do 
 	echo "$i"
 done
