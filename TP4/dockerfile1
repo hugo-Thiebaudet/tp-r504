@@ -1,0 +1,12 @@
+FROM DEBIAN:12
+
+Run apt-get update && apt-get upgrade\
+    apt-get install -y build-essential python-dev python3-pip default-libmysqlclient-dev
+Run pip3 install -upgrade pip
+Run install flask-mysql mysql-connector-python
+run mkdir -p /srv/templates
+Copy /Téléchargements/index.html /srv
+Copy /Téléchargement/app1.py /srv
+
+WORKDIR /srv/
+CMD["flask","--app","/src/app1","run","--host=0.0.0.0"]
