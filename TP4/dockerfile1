@@ -1,6 +1,6 @@
 FROM DEBIAN:12
 
-Run apt-get update && apt-get upgrade\
+Run apt-get update && apt-get upgrade -y\
     apt-get install -y build-essential python-dev python3-pip default-libmysqlclient-dev
 Run pip3 install -upgrade pip
 Run install flask-mysql mysql-connector-python
