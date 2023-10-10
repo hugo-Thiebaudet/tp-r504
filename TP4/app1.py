@@ -9,7 +9,7 @@ db_config = {
     'user': 'root',
     'password': 'foo',
     'database': 'demosql'
-    'port' : '3306'
+    'port' :'3307'
 }
 
 # Initialize MySQL connection
