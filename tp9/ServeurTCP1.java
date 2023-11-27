@@ -16,7 +16,7 @@ public class ServeurTCP1
 				socketserver.close();
 			}
 			catch(Exception ex ) {
-				system.out.println( "erreur !");
+				System.out.println( "erreur !");
 				ex.printStackTrace();
 			}
 	}
