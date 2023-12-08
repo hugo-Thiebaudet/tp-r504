@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  # Service Dolibarr (dragps)
+  dolibarr:
+    image: dragas/dolibarr:latest
+    container_name: dolibarr
+    ports:
+      - "8080:80"
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=dolibarr
+      - MYSQL_PASSWORD=dolibarrpass
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DB=dolibarr
+    volumes:
+      - ./conf.php:/var/www/html/conf/conf.php  # Ajoutez cette ligne pour copier le fichier
+
+  # Service MySQL
+  db:
+    image: mysql:latest
+    container_name: mysql-dolibarr
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DATABASE=dolibarr
+      - MYSQL_USER=dolibarr
+      - MYSQL_PASSWORD=dolibarrpass
+
