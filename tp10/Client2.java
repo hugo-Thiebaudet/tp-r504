@@ -3,8 +3,9 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.*;
 import org.apache.http.client.methods.*;
 import org.apache.http.impl.client.*;
+import javax.json.*;
 
-public class Client {
+public class Client2 {
     public static void main(String[] args) {
 
         System.out.println(":)");
@@ -22,20 +23,18 @@ public class Client {
             System.out.println("Response Line: " + resp.getStatusLine());
             System.out.println("Response Code: " + resp.getStatusLine().getStatusCode());
 
-			BufferedReader rd = new BufferedReader( new InputStreamReader( resp.getEntity().getContent()) );
+            // Lire le contenu brut de la réponse HTTP
+            InputStreamReader isr = new InputStreamReader(resp.getEntity().getContent());
 
-			StringBuffer result = new StringBuffer();
-			String line = "";
-			while ((line = rd.readLine()) !=null)
-			{
-				result.append(line);
-				result.append("\n"); //saut de ligne
-			}
+            // Utiliser JsonReader pour lire le contenu JSON directement
+            JsonReader reader = Json.createReader(isr);
+            JsonObject jsonObject = reader.readObject();
+            reader.close();
+            isr.close();
 
-			String page = result.toString();
-			System.out.println( page );
-			
-        } catch (IOException ex) {
+			System.out.println( "duree=" + jsonObject.getString("Runtime") );
+
+        } catch (Exception ex) {
             System.out.println("Erreur !");
             ex.printStackTrace();
         }

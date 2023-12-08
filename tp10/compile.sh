@@ -1,1 +1,1 @@
-javac -classpath "/home/user/Telechargements/lib/*" *.java
+javac -classpath "/home/user/lib/*" *.java

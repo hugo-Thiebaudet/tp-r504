@@ -1,1 +1,1 @@
-java -classpath .;c:\temp\* 
+java -classpath .:/home/user/lib/*  Client2 $1
