@@ -1,7 +1,7 @@
 <?php
 
 $dolibarr_main_db_type='mysqli';
-$dolibarr_main_db_host='172.19.0.2';
+$dolibarr_main_db_host='172.20.0.2';
 $dolibarr_main_db_port='3306';
 $dolibarr_main_db_name='MariaDB';
 $dolibarr_main_db_user='root';

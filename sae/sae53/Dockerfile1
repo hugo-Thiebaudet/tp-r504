@@ -6,7 +6,7 @@ RUN apk update && \
     apk add --no-cache curl ca-certificates tar && \
     curl -O https://www.php.net/distributions/php-8.1.0.tar.gz && \
     tar -xzf php-8.1.0.tar.gz && \
-    rm php-8.1.0.tar.gz  # Optionnel : Supprimer le fichier tar pour économiser de l'espace
+    rm php-8.1.0.tar.gz  # Suppression du fichier tar
 
 RUN apk add php-apache2 php-pdo_mysql php-curl php-gd php-xml php-mbstring
 

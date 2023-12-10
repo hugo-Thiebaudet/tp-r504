@@ -34,33 +34,35 @@ green "Lancement du SGBD"
 mkdir -p shared/csv
 
 docker run --rm -d \
-   --name mysql_aa \
-   --network sae \
+   --name Mysql \
+   --network dolibarr \
    --env MYSQL_ROOT_PASSWORD=root \
    im_mysql 
 
 # Attendre avant de remplir la bdd
 green "Remplissage de la BDD"
-sleep 15
+sleep 10
 
 # Remplissage BDD
-mysql -h 172.19.0.2 -u root -p'root' -P 3306 < bdd1.sql
+mysql -h 172.20.0.2 -u root -p'root' -P 3306 < bdd.sql
 
 # Lancement Conteneur Dolibarr
 green "Lancement de Dolibarr"
 sudo docker run --rm -d \
-    --name dolibarr_aa \
+    --name Dolibarr \
     -p 8080:80 \
+    --network dolibarr \
     --env DOLI_DB_TYPE=mysqli \
-    --env DOLI_DB_HOST=172.19.0.2 \
     --env DOLI_DB_NAME=dolibarr \
     --env DOLI_DB_PORT=3306 \
     --env DOLI_DB_USER=root \
     --env DOLI_DB_PASSWORD=root \
+    --env DOLI_DB_HOST=172.20.0.2 \
     --env DOLI_MODULES=modSociete \
+    --env APACHE_SERVER_NAME=localhost \
     --env DOLI_ADMIN_LOGIN=admin \
     --env DOLI_ADMIN_PASSWORD=dolibarr \
-    --env APACHE_SERVER_NAME=localhost \
-    --network sae \
     upshift/dolibarr
+
+# Ligne vide à la fin du fichier
 
