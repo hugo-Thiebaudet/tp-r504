@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Vérifier si le numéro du strip xkcd est spécifié en argument
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <numéro_strip_xkcd>"
-    exit 1
-fi
-
 strip_number="$1"
 url="https://xkcd.com/$strip_number/"
 
@@ -23,7 +17,8 @@ if [ -n "$image_url" ]; then
     wget -q -O xkcd_strip.png "$image_url"
 
     # Afficher l'image avec xdg-open
-    xdg-open xkcd_strip.png
+	eog xkcd_strip.png
+
 else
     echo "Impossible de trouver l'URL de l'image pour le strip xkcd $strip_number."
 fi
