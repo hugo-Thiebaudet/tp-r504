@@ -1,33 +1,52 @@
-options=("Vérifier l'existence d'un utilisateur" "Connaître l'UID d'un utilisateur" "Quitter")
-    echo "Sélectionnez une option:"
+#!/bin/bash
+
+# Fonction pour afficher du texte en vert
+print_green() {
+    echo -e "\e[32m$1\e[0m"
+}
+
+while true; do
+    # Afficher le menu
+    echo "Sélectionnez :"
+    PS3="Votre choix : "
+    options=("Vérifier l’existence d’un utilisateur" "Connaître l’UID d’un utilisateur" "Quitter")
+
+    # Afficher les options avec la commande select
     select opt in "${options[@]}"; do
-        case $opt in
-            "Vérifier l'existence d'un utilisateur")
+        case $REPLY in
+            1)
+                # Vérifier l'existence d'un utilisateur
                 read -p "Nom d'utilisateur à vérifier : " username
-                if id "$username" >/dev/null 2>&1; then
-                    echo "L'utilisateur $username existe."
+                if grep  "^$username:" /etc/passwd; then
+                    print_green "L'utilisateur $username existe."
                 else
-                    echo "L'utilisateur $username n'existe pas."
+                    print_green "L'utilisateur $username n'existe pas."
                 fi
+                break
                 ;;
-            "Connaître l'UID d'un utilisateur")
-                read -p "Nom d'utilisateur pour connaître l'UID : " username
-                uid=$(id -u "$username" 2>/dev/null)
+            2)
+                # Connaître l'UID d'un utilisateur
+                read -p "Nom d'utilisateur pour connaître l'UID : " nomutilisateur
+				#Obtenir l'IUD de l'utilisateur spécifié 
+                uid=$(id -u "$nomutilisateur" 2>/dev/null) 
+				# Tester si L'utilisateur existe & si la chaine n'est pas nul
                 if [ -n "$uid" ]; then
-                    echo "L'UID de l'utilisateur $username est $uid."
+                    print_green "L'UID de l'utilisateur $nomutilisateur est $uid."
                 else
-                    echo "L'utilisateur $username n'existe pas."
+                    print_green "L'utilisateur $nomutilisateur n'existe pas."
                 fi
+                break
                 ;;
-            "Quitter")
-                echo "Au revoir !"
+            3)
+                # Quitter le script
+                print_green "Au revoir !"
                 exit 0
                 ;;
-            *) 
-                echo "Choix invalide. Veuillez sélectionner à nouveau."
+            *)
+                # Pour les choix invalides
+                print_green "Choix invalide. Veuillez sélectionner à nouveau."
                 ;;
         esac
-        PS3="Choisissez une option : "
     done
 done
 
