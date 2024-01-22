@@ -1,5 +1,4 @@
 #!/bin/bash
-
 strip_number="$1"
 url="https://xkcd.com/$strip_number/"
 
@@ -23,6 +22,6 @@ else
     echo "Impossible de trouver l'URL de l'image pour le strip xkcd $strip_number."
 fi
 
-# Nettoyer les fichiers temporaires
+# Supprimer les fichiers à la fin du script
 rm -f xkcd_page.html xkcd_strip.png
 
