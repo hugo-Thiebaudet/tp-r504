@@ -1,0 +1,12 @@
+# Utilisez l'image MySQL officielle en tant qu'image parent
+FROM mysql:8.0
+
+# Définit les variables d'environnement pour la configuration de MySQL
+ENV MYSQL_ROOT_PASSWORD=root \
+    MYSQL_DATABASE=flask_app \
+    MYSQL_USER=flask_user \
+    MYSQL_PASSWORD=flask_password
+
+# Expose le port 3306 pour que MySQL soit accessible à l'extérieur du conteneur
+EXPOSE 3306
+
