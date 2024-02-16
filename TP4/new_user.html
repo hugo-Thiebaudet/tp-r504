@@ -1,13 +1,21 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Nouvel Utilisateur</title>
 </head>
 <body>
 
-<!-- Formulaire pour saisir un nouvel identifiant -->
+<!-- Formulaire pour saisir un nouvel utilisateur -->
 <form action="/newuser/" method="post">
     <label for="username">Nouvel identifiant :</label>
-    <input type="text" id="username" name="username" required>
+    <input type="text" id="username" name="username" required><br><br>
+    
+    <label for="email">Adresse e-mail :</label>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" required><br><br>
+    
     <button type="submit">Envoyer</button>
 </form>
 
